@@ -1,0 +1,1 @@
+User -> dns.sibdns.ir -> VPS DoH -> MikroTik -> Tunnel -> Foreign Internet

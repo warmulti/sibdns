@@ -1,0 +1,31 @@
+version: '3.8'
+services:
+  doh-server:
+    image: m13253/dns-over-https
+    volumes:
+      - ./doh-server.conf:/etc/doh-server.conf
+      - caddy_certs:/certs
+    command: ["-conf", "/etc/doh-server.conf"]
+    networks:
+      - sibdns
+
+  caddy:
+    image: caddy:2
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - caddy_data:/data
+      - caddy_config:/config
+      - caddy_certs:/certs
+    networks:
+      - sibdns
+
+volumes:
+  caddy_data:
+  caddy_config:
+  caddy_certs:
+
+networks:
+  sibdns:

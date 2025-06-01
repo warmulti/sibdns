@@ -1,0 +1,9 @@
+[Unit]
+Description=DoH Server
+
+[Service]
+ExecStart=/usr/local/bin/doh-server -conf /etc/doh-server.conf
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

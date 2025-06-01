@@ -1,0 +1,5 @@
+dns.sibdns.ir {
+    encode gzip
+    reverse_proxy /dns-query doh-server:8053
+    tls you@example.com
+}
